@@ -54,27 +54,30 @@
       }
 
       function App(){
+
+        // save messages in an array
+        // generate HTML
+        const chatMessages = [
+          { message: "hello chatbot", sender: "user" },
+          { message: "Hello! How can I help you?", sender: "robot" },
+          { message: "can you get me todays date?", sender: "user" },
+          { message: "Today is January 28", sender: "robot" },
+        ];
+
+        const chatMessageComponents = chatMessages.map((chatMessage) => {
+          return (
+            <ChatMessage 
+              message={chatMessage.message} 
+              sender={chatMessage.sender}
+          />);
+        });
+
         return(
         <>
           <ChatInput />
-          <ChatMessage 
-            message="hello chatbot" 
-            sender="user"
-          />
-          <ChatMessage 
-            message="Hello! How can I help you?" 
-            sender="robot"
-          />
-          <ChatMessage 
-            message="can you get me todays date?" 
-            sender="user"
-          />
-          <ChatMessage 
-            message="Today is January 28" 
-            sender="robot"
-          />
+          {chatMessageComponents}
         </>
-        )
+        );
       }
 
       const container = document.querySelector('.js-container');
